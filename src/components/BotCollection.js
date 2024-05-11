@@ -1,7 +1,7 @@
 import React from "react";
 import BotCard from "./BotCard"
 
-function BotCollection({bots, enlistBot, enlistDeenistBot}) {
+function BotCollection({bots, enlistBot, dischargeBot }) {
   // Your code here
 
   return (
@@ -10,7 +10,8 @@ function BotCollection({bots, enlistBot, enlistDeenistBot}) {
         {/*...and here..*/}
         {bots.map(bot=>{
           return (<BotCard key = {bot.id} bot = {bot} 
-            deEnlistBot={enlistBot}/>)
+            deEnlistBot={enlistBot} 
+            dischargeBot ={dischargeBot} />)
         })}
       </div>
     </div>

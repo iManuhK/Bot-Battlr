@@ -22,8 +22,13 @@ function BotsPage() {
   }
 
   function deleteBot(thisBot){
-    const remainingBotsArray= botArmy.filter(bot=>bot.id!==thisBot.id)
-    setBotArmy(remainingBotsArray)
+    const remainingafterDel= botArmy.filter(bot=>bot.id!==thisBot.id)
+    setBotArmy(remainingafterDel)
+
+    fetch(`http://localhost:8002/bots/${thisBot.id}`, {
+      method: "DELETE",})
+      .then(res=>res.json())
+      .then (data=>alert("Robot discharged honourably!!!!"))
   }
   function releaseBot(thisBot) {
     const remainingBotsArray= botArmy.filter(bot=>bot.id!==thisBot.id)
@@ -32,7 +37,7 @@ function BotsPage() {
   return (
     <div>
       <YourBotArmy bots={botArmy} dischargeBot={deleteBot} deEnlistBot = {releaseBot} />
-      <BotCollection bots={bots} enlistBot={addBot} />
+      <BotCollection bots={bots} dischargeBot={deleteBot} enlistBot={addBot} />
     </div>
   )
 }
